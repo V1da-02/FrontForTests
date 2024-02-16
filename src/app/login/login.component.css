@@ -1,0 +1,85 @@
+
+
+@font-face {
+    font-family:'Space';
+    src: url(/front/src/assets/SpaceGrotesk-VariableFont_wght.ttf);
+}
+
+
+/* html{
+        background-image: url('/assets/back.jpg');
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; 
+} */
+
+
+.logger{
+    display:inline-table;
+    margin-left: 50px;
+    margin-top: 60px;
+}
+
+
+.inputs{
+    margin-top: 20px;
+    width: 300px;
+    height: 26px;
+    /* background-color: rgba(222, 238, 245, 0.973); */
+    background: none;
+    color: white;
+    border-color: white;
+}
+
+
+
+    .btn{
+        color: black;
+        border-color: white;
+        /* background-color: rgba(222, 238, 245, 0.973); */
+        background-color:rgba(255, 255, 255, 0.5);
+        width: 150px;
+        margin-top: 10px;
+        margin-top: 20px;
+    }
+
+
+
+    .btn:hover{
+        /* font-weight: bold; */
+        background-color:rgba(255, 255, 255, 0.7);
+    }
+
+    
+
+
+    /* ///// */
+    .textDiv{
+        margin-top: 0;
+        /* background-color: green; */
+        width: 1300px;
+        margin-left: 80px;
+        margin-right: 80px;
+        display: inline-table;
+
+        
+
+    }
+
+    .title{
+            /* margin-left: 40%; */
+            color: white;
+            text-align: center;
+            font-size: 50px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        .text{
+        color: white;
+         background-color: rgba(0, 0, 0, 0.4);
+        /* font-family:'Brush Script MT', cursive; */
+        font-family:'Courier New', Courier, monospace;
+        font-size: 30px;
+            /* text-align: ce; */
+        }
