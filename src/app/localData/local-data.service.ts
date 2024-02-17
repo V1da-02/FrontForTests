@@ -12,7 +12,7 @@ export class LocalDataService {
 usersLink = './front/src/assets/users.json';
 
 
-link= 'http://locolhost:8080/date'
+link= 'http://localhost:8080/date'
 allUsers:any;
 
 loggedUser = {

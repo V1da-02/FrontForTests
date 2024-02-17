@@ -28,7 +28,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  // constructor(private Service:LocalDataService){}
+  
   constructor(private http:HttpClient) { }
 
   text = 
