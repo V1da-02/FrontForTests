@@ -12,37 +12,12 @@ export class LocalDataService {
 usersLink = './front/src/assets/users.json';
 
 
-link= 'http://localhost:8080/date'
-allUsers:any;
-
 loggedUser = {
-  login:"",
-  password:"",
   username:"",
   characters:[]
 }
 
 
-logIn(){
-this.http.get(this.link).subscribe((data)=>{
-  this.allUsers = data
-})
-console.log(this.allUsers);
 
-
-}
-
-
-getUsers(){
-  this.http.get(this.usersLink).subscribe( (data)=> {
-    this.allUsers = data;
-    console.log("Data received:" + this.allUsers);
-    
-  }, (error)=>{
-      console.error('Error:',error);
-      
-    })
-
-}
 
 }
