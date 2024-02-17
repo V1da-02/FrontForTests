@@ -11,6 +11,8 @@ export class LocalDataService {
 
 usersLink = './front/src/assets/users.json';
 
+
+link= 'http://locolhost:8080/date'
 allUsers:any;
 
 loggedUser = {
@@ -21,7 +23,11 @@ loggedUser = {
 }
 
 
-logIn(login:string, password:string){
+logIn(){
+this.http.get(this.link).subscribe((data)=>{
+  this.allUsers = data
+})
+console.log(this.allUsers);
 
 
 }
