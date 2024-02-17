@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
     <br>
     <input #password placeholder="password" type="password" class="inputs" (keydown.enter)="logIn(login.value, password.value)">    
     <br>
-    <button class="btn" (click)="logIn(login.value, password.value)">login</button>
+    <button class="btn" (click)="temp()" (click)="logIn(login.value, password.value)">login</button>
 
 
     
@@ -36,7 +36,7 @@ export class LoginComponent {
   
   
   logIn(login:string, password:string){
-    console.log(login, password);
+    // console.log(login, password);
     // this.Service.getUsers()
     // console.log(this.Service.allUsers);
     
@@ -44,7 +44,18 @@ export class LoginComponent {
     
   }
 
-
+  link= 'http://localhost:8080/date'
+received:any;
+  temp(){
+this.http.get('http://localhost:8080/date').subscribe((data)=>{
+  this.received = data
+  console.log(this.received);
+},(error)=>{
+  console.error('Error:', error);
+})
+ 
+    
+  }
 
 
 
