@@ -1,38 +1,62 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { LocalDataService } from '../localData/local-data.service';
 
 @Component({
   selector: 'app-home',
   template: `
     <div class="interface">
-      <p id="storyText" #storyText class="storyText">gf;kdjngdfkjgfbkjdgbdjdb</p>
+      <p id="storyText" #storyText class="storyText">Defaul text. If u see this, something went wrong :)</p>
       
     </div>
-    <p class="options">option1</p>
-    <p class="options">Decizi după acest noroc să termini cu toate infracțiunile și să trăiești o viață liniștită</p>
-    <p class="options">{{text}}</p>
+    <p class="options" (click)="buttonGetStory(0)">default option1</p>
+    <p class="options" (click)="buttonGetStory(1)">default option2</p>
+    <p class="options" (click)="buttonGetStory(2)">default option3</p>
   `,
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor( public http:HttpClient ){}
+  constructor( public http:HttpClient,
+               private localData:LocalDataService ){}
 
 ngOnInit(){
-  this.textChange()
+  this.currentRoom = this.localData.loggedUser.roomId
+  this.getStory(this.currentRoom)
+  this.textChange(this.storyBox) 
 }
 
 public currentRoom:any;
 
-private storyBox = {
-text:"",
-choice:[],
-choiceGoToAdress:[]
+// private storyBox = {
+// text:"",
+// choice:[],
+// choiceGoToAdress:[]
+// }
+
+private storyBox:any;
+
+
+buttonGetStory(index:number){
+let goTo = this.storyBox.choiceGoToAdress[index]
+this.getStory(goTo)
+
+
+
 }
 
 
+
 getStory(roomId:number){
-  this.http.post('http://localhost:8080/getStory', roomId)
+  this.http.post('http://localhost:8080/getStory', roomId).subscribe((response) =>{
+    this.storyBox = response
+  },(error)=>{
+    console.error("Error:"+error);
+    
+  });
+
+
+  
 }
 
 
@@ -46,11 +70,11 @@ text = 'merge '
 
   g = document.getElementById("storyText");
 
-  textChange() {
+  textChange(storyBox:any) {
     let g = document.getElementById("storyText");
 
     if (g !== null) {
-      g.innerText = this.text;
+      g.innerText = this.storyBox.text;
       console.log('done');
       
     } else {

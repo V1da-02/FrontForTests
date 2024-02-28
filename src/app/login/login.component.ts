@@ -52,7 +52,7 @@ export class LoginComponent {
     })
 
     this.localData.loggedUser.username = this.loginResp.username;
-    this.localData.loggedUser.characters = this.loginResp.characters;
+    this.localData.loggedUser.roomId = this.loginResp.roomId;
     console.log(this.localData.loggedUser);
     
     
