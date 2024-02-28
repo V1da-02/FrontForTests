@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
 
@@ -15,14 +16,27 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  constructor( public http:HttpClient ){}
 
 ngOnInit(){
-  this.temp()
+  this.textChange()
 }
 
-  // @ViewChild('storyText', { static: true }) storyTextRef!: ElementRef;
+public currentRoom:any;
 
-text = 'merge bine'
+private storyBox = {
+text:"",
+choice:[],
+choiceGoToAdress:[]
+}
+
+
+getStory(roomId:number){
+  this.http.post('http://localhost:8080/getStory', roomId)
+}
+
+
+text = 'merge '
 
   // test() {
   //   if (this.storyTextRef) {
@@ -32,17 +46,15 @@ text = 'merge bine'
 
   g = document.getElementById("storyText");
 
-  temp() {
+  textChange() {
     let g = document.getElementById("storyText");
-  
-    // Check if g is not null before accessing its properties
+
     if (g !== null) {
       g.innerText = this.text;
       console.log('done');
       
     } else {
       console.error("Element with id 'storyText' not found.");
-      // Handle the case where the element is not found, e.g., show an error message.
     }
   }
 
