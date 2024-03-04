@@ -14,9 +14,9 @@ import { HomeComponent } from '../home/home.component';
     <br>
     <input #password placeholder="password" type="password" class="inputs" (keydown.enter)="logIn(login.value, password.value)">    
     <br>
-    <button class="btn"  (click)="temp()" (click)="logIn(login.value, password.value)">login</button>
+    <button class="btn" (click)="logIn(login.value, password.value)">login</button>
 
-  <button (click)="test()">home</button>  <!-- TESTARE NAVIGATE-->
+  <button (click)="goHome()">home</button>  <!-- TESTARE NAVIGATE-->
     
   </div>
 
@@ -42,11 +42,7 @@ export class LoginComponent {
   loginResp:any;
 
   logIn(login:string, password:string){
-    const logData = {
-      login,
-      password
-    }
-    this.http.post('http://localhost:8080/logIn', logData).subscribe( (resp)=>{
+    this.http.post('http://localhost:8080/logIn', [{login, password}] ).subscribe( (resp)=>{
       this.loginResp = resp; 
       
     })
@@ -59,7 +55,7 @@ export class LoginComponent {
   }
 
 
-test(){
+goHome(){
   this.router.navigate(['/home'])
 }
 
