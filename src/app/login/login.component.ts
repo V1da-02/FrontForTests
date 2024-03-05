@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { logger } from 'src/assets/logerType';
 import { Router } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
+import { UsersType } from 'src/assets/usersType';
 
 @Component({
   selector: 'app-login',
@@ -42,17 +43,15 @@ export class LoginComponent {
   loginResp:any;
 
   logIn(login:string, password:string){
-    this.http.post('http://localhost:8080/logIn', [{login, password}] ).subscribe( (resp)=>{
-      this.loginResp = resp; 
-      
-    })
+    this.http.post<UsersType>('http://localhost:8080/logIn', {login, password}).subscribe((resp) => {
+      this.loginResp = resp;
+    });
 
     this.localData.loggedUser.username = this.loginResp.username;
     this.localData.loggedUser.roomId = this.loginResp.roomId;
-    console.log(this.localData.loggedUser);
-    
-    
+    console.log(this.localData.loggedUser);    
   }
+
 
 
 goHome(){
