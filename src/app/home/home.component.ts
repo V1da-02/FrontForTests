@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { LocalDataService } from '../localData/local-data.service';
+import { storyBox } from 'src/assets/storybox';
 
 @Component({
   selector: 'app-home',
@@ -48,14 +49,18 @@ this.getStory(goTo)
 
 
 getStory(roomId:number){
-  this.http.post('http://localhost:8080/getStory', roomId).subscribe((response) =>{
+  console.log(`trying to get room ${roomId} info`);
+  
+  this.http.post<storyBox>('http://localhost:8080/date', roomId).subscribe((response) =>{
     this.storyBox = response
+    console.log(this.storyBox);
+    
   },(error)=>{
     console.error("Error:"+error);
     
   });
 
-
+  this.textChange(this.storyBox)
   
 }
 
@@ -70,7 +75,7 @@ text = 'merge '
 
   g = document.getElementById("storyText");
 
-  textChange(storyBox:any) {
+  textChange(storyBox:storyBox) {
     let g = document.getElementById("storyText");
 
     if (g !== null) {

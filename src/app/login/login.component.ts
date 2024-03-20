@@ -42,14 +42,16 @@ export class LoginComponent {
   
   loginResp:any;
 
-  logIn(login:string, password:string){
-    this.http.post<UsersType>('http://localhost:8080/logIn', {login, password}).subscribe((resp) => {
+  async logIn(login:string, password:string){
+    const resp = await this.http.post<UsersType>('http://localhost:8080/logIn', {login, password}).toPromise()
       this.loginResp = resp;
-    });
 
     this.localData.loggedUser.username = this.loginResp.username;
     this.localData.loggedUser.roomId = this.loginResp.roomId;
-    console.log(this.localData.loggedUser);    
+    console.log(this.localData.loggedUser);    //log user
+    if (this.localData.loggedUser){
+      this.router.navigate(['/home'])
+    }
   }
 
 
