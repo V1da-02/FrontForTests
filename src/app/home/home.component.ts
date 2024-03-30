@@ -9,7 +9,7 @@ import { storyBox } from 'src/assets/storybox';
   template: `
     <div class="interface">
       <p id="storyText" #storyText class="storyText">Defaul text. If u see this, something went wrong :)</p>
-      
+      <button (click)="this.getStory(1)">log storybox</button>
     </div>
     <p class="options" (click)="buttonGetStory(0)">default option1</p>
     <p class="options" (click)="buttonGetStory(1)">default option2</p>
@@ -42,25 +42,29 @@ buttonGetStory(index:number){
 let goTo = this.storyBox.choiceGoToAdress[index]
 this.getStory(goTo)
 
+}
 
-
+BoxLog(){
+  console.log(this.storyBox)
 }
 
 
-
-getStory(roomId:number){
+async getStory(roomId:number){
   console.log(`trying to get room ${roomId} info`);
   
-  this.http.post<storyBox>('http://localhost:8080/date', roomId).subscribe((response) =>{
+ const box = await this.http.post<storyBox>('http://localhost:8080/date', null, {params:{roomId}}).subscribe((response) =>{
     this.storyBox = response
+    // console.log(response);
     console.log(this.storyBox);
+    
     
   },(error)=>{
     console.error("Error:"+error);
     
   });
+  
 
-  this.textChange(this.storyBox)
+  // this.textChange(this.storyBox)
   
 }
 

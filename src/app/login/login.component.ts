@@ -57,7 +57,8 @@ export class LoginComponent {
 
 
 goHome(){
-  this.router.navigate(['/home'])
+  // this.router.navigate(['/home'])
+  this.logIn("admin","admin")
 }
 
 
@@ -73,7 +74,5 @@ this.http.get(this.link).subscribe((data)=>{
  
     
   }
-
-// temp branch comment
 
 }
