@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { LocalDataService } from '../localData/local-data.service';
 import { storyBox } from 'src/assets/storybox';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,12 +20,15 @@ import { storyBox } from 'src/assets/storybox';
 })
 export class HomeComponent {
   constructor( public http:HttpClient,
-               private localData:LocalDataService ){}
+               private localData:LocalDataService, 
+               private router:Router){}
 
 ngOnInit(){
+  if(this.checkLogStatus()){
   this.currentRoom = this.localData.loggedUser.roomId
   this.getStory(this.currentRoom)
   this.textChange(this.storyBox) 
+}
 }
 
 public currentRoom:any;
@@ -83,5 +87,14 @@ async getStory(roomId:number){
       console.error("Element with id 'storyText' not found.");
     }
   }
+
+checkLogStatus(){
+  if(this.localData.loggedUser.roomId == null || this.localData.loggedUser.username == null){
+    this.router.navigate(['/login'])
+  return false
+  }
+  else return true;
+}
+
 
 }
