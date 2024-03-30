@@ -13,8 +13,8 @@ usersLink = './front/src/assets/users.json';
 
 
 loggedUser = {
-  username:"",
-  roomId:0
+  username:null,
+  roomId:null
 }
 
 

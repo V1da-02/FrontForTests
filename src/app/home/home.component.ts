@@ -9,11 +9,11 @@ import { storyBox } from 'src/assets/storybox';
   template: `
     <div class="interface">
       <p id="storyText" #storyText class="storyText">Defaul text. If u see this, something went wrong :)</p>
-      <button (click)="this.getStory(1)">log storybox</button>
+      <!-- <button (click)="this.getStory(1)">log storybox</button> -->
     </div>
-    <p class="options" (click)="buttonGetStory(0)">default option1</p>
-    <p class="options" (click)="buttonGetStory(1)">default option2</p>
-    <p class="options" (click)="buttonGetStory(2)">default option3</p>
+    <p id="btn1" class="options" (click)="buttonGetStory(0)">default option1</p>
+    <p id="btn2" class="options" (click)="buttonGetStory(1)">default option2</p>
+    <p id="btn3" class="options" (click)="buttonGetStory(2)">default option3</p>
   `,
   styleUrls: ['./home.component.css']
 })
@@ -28,26 +28,14 @@ ngOnInit(){
 }
 
 public currentRoom:any;
-
-// private storyBox = {
-// text:"",
-// choice:[],
-// choiceGoToAdress:[]
-// }
-
 private storyBox:any;
 
 
 buttonGetStory(index:number){
-let goTo = this.storyBox.choiceGoToAdress[index]
+let goTo = this.storyBox.goTo[index]
 this.getStory(goTo)
 
 }
-
-BoxLog(){
-  console.log(this.storyBox)
-}
-
 
 async getStory(roomId:number){
   console.log(`trying to get room ${roomId} info`);
@@ -57,34 +45,39 @@ async getStory(roomId:number){
     // console.log(response);
     console.log(this.storyBox);
     
-    
+    this.textChange(this.storyBox)
   },(error)=>{
     console.error("Error:"+error);
     
   });
-  
-
-  // this.textChange(this.storyBox)
-  
 }
 
 
-text = 'merge '
-
-  // test() {
-  //   if (this.storyTextRef) {
-  //     this.storyTextRef.nativeElement.innerText = this.text;
-  //   }
-  // }
-
-  g = document.getElementById("storyText");
-
   textChange(storyBox:storyBox) {
     let g = document.getElementById("storyText");
+    let b1 = document.getElementById("btn1")
+    let b2 = document.getElementById("btn2")
+    let b3 = document.getElementById("btn3")
+
+    if(b1 !== null){
+      b1.innerText = this.storyBox.alegeri[0]
+      console.log('btn1 initialized');
+      }
+
+    if(b2 !== null){
+      b2.innerText = this.storyBox.alegeri[1]
+      console.log('btn2 initialized');
+    }  
+
+    if(b3 !== null){
+      b3.innerText = this.storyBox.alegeri[2]
+      console.log('btn3 initialized');
+      }
+
 
     if (g !== null) {
       g.innerText = this.storyBox.text;
-      console.log('done');
+      console.log('Box text initialized');
       
     } else {
       console.error("Element with id 'storyText' not found.");
