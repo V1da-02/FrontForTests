@@ -1,0 +1,12 @@
+
+
+.form{
+display: flex;
+background-color: rgba(255, 255, 255, 0.281);
+height: 70%;
+width: 70%;
+align-self: center;
+justify-self: center;
+align-content: center;
+
+}

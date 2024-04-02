@@ -50,7 +50,7 @@ export class LoginComponent {
     this.localData.loggedUser.roomId = this.loginResp.roomId;
     console.log(this.localData.loggedUser);    //log user
     if (this.localData.loggedUser){
-      this.router.navigate(['/home'])
+      this.router.navigate(['/menu'])
     }
   }
 

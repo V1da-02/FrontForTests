@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { GameComponent } from './game/game.component';
 import { FalseLinkComponent } from './false-link/false-link.component';
+import { CharacterCreationComponent } from './character-creation/character-creation.component';
+import { CharactersListComponent } from './characters-list/characters-list.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FalseLinkComponent } from './false-link/false-link.component';
     LoginComponent,
     HomeComponent,
     GameComponent,
-    FalseLinkComponent
+    FalseLinkComponent,
+    CharacterCreationComponent,
+    CharactersListComponent
   ],
   imports: [
     BrowserModule,

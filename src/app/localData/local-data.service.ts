@@ -11,6 +11,8 @@ export class LocalDataService {
 
 usersLink = './front/src/assets/users.json';
 
+playing = false;
+
 
 loggedUser = {
   username:null,
