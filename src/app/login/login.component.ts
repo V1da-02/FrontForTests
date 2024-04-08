@@ -47,7 +47,6 @@ export class LoginComponent {
       this.loginResp = resp;
 
     this.localData.loggedUser.username = this.loginResp.username;
-    this.localData.loggedUser.roomId = this.loginResp.roomId;
     console.log(this.localData.loggedUser);    //log user
     if (this.localData.loggedUser){
       this.router.navigate(['/menu'])

@@ -16,8 +16,15 @@ playing = false;
 
 loggedUser = {
   username:null,
-  roomId:null
+  characters:[]
 }
+
+selectedCharacter = {
+  hp:null,
+  name:null,
+  roomId:null,
+}
+
 
 
 

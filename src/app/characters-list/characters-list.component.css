@@ -5,3 +5,18 @@
     color:red; 
     display:flex
 }
+
+
+.chList{
+
+}
+
+.chList h3{
+    color: white;
+    display: inline-flex;
+    /* margin-left: 15px;
+    margin-right: 15px; */
+    width: 25%;
+    justify-content: center;
+
+}

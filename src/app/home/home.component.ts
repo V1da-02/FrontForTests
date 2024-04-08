@@ -25,7 +25,7 @@ export class HomeComponent {
 
 ngOnInit(){
   if(this.checkLogStatus()){
-  this.currentRoom = this.localData.loggedUser.roomId
+  this.currentRoom = this.localData.selectedCharacter.roomId
   this.getStory(this.currentRoom)
   this.textChange(this.storyBox) 
 }
@@ -89,7 +89,7 @@ async getStory(roomId:number){
   }
 
 checkLogStatus(){
-  if(this.localData.loggedUser.roomId == null || this.localData.loggedUser.username == null){
+  if(this.localData.selectedCharacter.roomId == null || this.localData.loggedUser.username == null){
     this.router.navigate(['/login'])
   return false
   }
