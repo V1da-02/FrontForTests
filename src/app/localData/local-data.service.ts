@@ -16,6 +16,7 @@ playing = false;
 
 loggedUser = {
   username:null,
+  // characters:[{name:"Taoy", roomId:"1", class:"Paladin"}]
   characters:[]
 }
 

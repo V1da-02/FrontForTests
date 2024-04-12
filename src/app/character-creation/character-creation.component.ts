@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { LocalDataService } from '../localData/local-data.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-character-creation',
@@ -12,7 +14,7 @@ import { Router } from '@angular/router';
     <br>
     <label for="chName">Character name: </label>
     <br>
-    <input name="chName" type="text" placeholder="" id="chName" style="width:100%; width: 700px;" required>
+    <input name="chName" type="text" placeholder="" id="chName" style="width:100%; width: 700px;" #chName required>
   </div>
 
     <br>
@@ -65,7 +67,7 @@ import { Router } from '@angular/router';
     <br>
     <div style="display: flex; justify-content: center; align-items: center;">
     <!-- <input type="submit" value="Create character" class="createChBtn"> -->
-    <button class="createChBtn" style="width: auto;">Create character</button>
+    <button class="createChBtn" style="width: auto;" (click)="createCharacter(chName.value, selectedClass)">Create character</button>
     </div>
   <!-- </form> -->
 
@@ -85,8 +87,26 @@ export class CharacterCreationComponent {
     // }
   }
 
+  
 localData= inject(LocalDataService);
 Router = inject(Router)
+http = inject(HttpClient)
+
+
+
+  createCharacter(name:string, selectedClass:string){
+if(name== '' || selectedClass == ''){
+console.log("no data to pass");
+}
+
+else{
+
+  this.http.post("http://localhost:8080/createCharacter", {name, selectedClass}).subscribe((response) =>{
+
+  })
+}
+  }
+
 
 
 public currentClassStats={
@@ -97,6 +117,7 @@ public currentClassStats={
   Strength:'0',
   Wisdom:'0'
 }
+
 
 
 selectedClass:string = '';
