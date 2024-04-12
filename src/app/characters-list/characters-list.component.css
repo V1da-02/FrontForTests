@@ -54,3 +54,76 @@ button{
     top: -10px;
 
 }
+
+
+
+/* character creation additions: */
+
+
+
+.form{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /*best font so far*/
+display: flex;
+/* background-color: rgba(255, 255, 255, 0.451); */
+
+background-image: url('/assets/12.jpg');
+background-size: cover; 
+background-position: center center; 
+background-repeat: no-repeat; 
+
+height: 85%;
+width: 70%;
+flex-direction: column;
+align-items: center;
+position: absolute;
+margin-top: 35px;
+margin-left: 15%;
+margin-right: 15%;
+
+}
+
+
+
+.class-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+    width: 200px;
+    
+}
+
+.class-card img{
+    border: 2px solid transparent;    
+}
+
+.class-card img:hover{
+border: 2px solid transparent;
+transition: border-color 0.3s; 
+border-color: yellow;
+filter: brightness(1.2) hue-rotate(20deg); 
+}
+
+
+.nameBox{
+    align-items: center;
+}
+
+
+.createChBtn{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 50%;
+
+}
+
+
+.error{
+    height: 150px;
+    width: 370px;
+    background-color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(182, 16, 16);
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+}
