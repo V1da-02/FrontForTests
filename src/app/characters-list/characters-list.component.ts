@@ -5,8 +5,10 @@ import { Router } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { CharacterCreationComponent } from '../character-creation/character-creation.component';
 import { HttpClient } from '@angular/common/http';
-import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
-
+// import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { response } from 'express';
+import { CharactersInterface } from 'src/assets/characters';
 
 
 @Component({
@@ -97,7 +99,6 @@ import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
     <br>
     <br>
     <!-- <br> -->
-    <h2 class="error" id="errorMsg"></h2>
     <div style="display: flex; justify-content: center; align-items: center;">
     <!-- <input type="submit" value="Create character" class="createChBtn"> -->
     <button class="createChBtn" style="width: auto;" (click)="createCharacter(chName.value, selectedClass)">Create character</button>
@@ -127,10 +128,10 @@ import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
   styleUrls: ['./characters-list.component.css']
 })
 export class CharactersListComponent {
-  // constructor(readonly localData:LocalDataService){}
 
-  ngOnInit(){
-console.log(this.localData.loggedUser.characters);
+async  ngOnInit(){
+console.log(this.localData.loggedUser);
+await this.getHeroes(this.localData.loggedUser.userId)
 
 //uncomment when ready
 // ()=>{
@@ -152,11 +153,16 @@ private name = ''
   http = inject(HttpClient);
   
 
-  createCharacter(name:string, selectedClass:string){
-    if(name== '' || selectedClass == ''){
+async getHeroes(userId:any){
+  this.http.post<[CharactersInterface]>("http://localhost:8080/date/heroes", null, {params:{userId}}).subscribe((response)=>{})
+}
+
+
+  createCharacter(name:string, clasa:string){
+    if(name== '' || clasa == ''){
     console.log("no data to pass");
   } else{
-      this.http.post("http://localhost:8080/createCharacter", {name, selectedClass}).subscribe((response) =>{})
+      this.http.post("http://localhost:8080/date/add", {name, clasa}).subscribe((response) =>{})
       this.newCharacterWindow=false
     }}
     

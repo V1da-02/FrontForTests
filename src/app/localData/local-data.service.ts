@@ -16,8 +16,9 @@ playing = false;
 
 loggedUser = {
   username:null,
+  userId:null,
   // characters:[{name:"Taoy", roomId:"1", class:"Paladin"}]
-  characters:[]
+  // characters:[]
 }
 
 selectedCharacter = {
@@ -26,7 +27,7 @@ selectedCharacter = {
   roomId:null,
 }
 
-
+charactersList: any
 
 
 
