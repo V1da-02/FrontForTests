@@ -16,9 +16,8 @@
     display: inline-flex;
     /* margin-left: 15px;
     margin-right: 15px; */
-    width: 25%;
+    width: 33%;
     justify-content: center;
-
 }
 
 button{
@@ -126,4 +125,22 @@ filter: brightness(1.2) hue-rotate(20deg);
     flex-direction: column;
     align-items: center;
     position: absolute;
+}
+
+
+
+.listOfCharacters{
+    background-color: rgba(0, 0, 0, 0.315);
+
+    /* border-style: solid; */
+    border-color: white;
+    border-width: 1px;
+    height: 70px;
+    display: inline-block; /* or 'block' depending on layout needs */
+    width: 100%;
+}
+
+
+.listOfCharacters:hover{
+    background-color: rgba(0, 0, 0, 0.5);
 }

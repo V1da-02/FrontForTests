@@ -10,6 +10,7 @@ import { GameComponent } from './game/game.component';
 import { FalseLinkComponent } from './false-link/false-link.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
 import { CharactersListComponent } from './characters-list/characters-list.component';
+import { TempLinkComponent } from './temp-link/temp-link.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CharactersListComponent } from './characters-list/characters-list.compo
     GameComponent,
     FalseLinkComponent,
     CharacterCreationComponent,
-    CharactersListComponent
+    CharactersListComponent,
+    TempLinkComponent
   ],
   imports: [
     BrowserModule,

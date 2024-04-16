@@ -13,13 +13,6 @@ import { CharactersInterface } from 'src/assets/characters';
   selector: 'app-characters-list',
   template: `
   <div class="header">
-
-  <!-- <div class="error" *ngIf="showError">
-<span>
-  <h3>error message</h3>
-</span>
-  </div> -->
-
   <h2></h2>
   </div>
 
@@ -31,9 +24,13 @@ import { CharactersInterface } from 'src/assets/characters';
   <h3 class="chName">Character name</h3>
     <h3 class="chClass">Class</h3>
     <h3 class="chClass">Room</h3>
-    <h3 class="Action">Actions</h3>
     </span>
 
+    <span (click)="selectCharacter(character)" *ngFor="let character of this.localData.heroes" class="listOfCharacters" >
+    <h3>{{character.name}}</h3>
+    <h3>{{character.clasa}}</h3>
+    <h3>{{character.roomId}}</h3>
+    </span>
 
 
 <div class="overlay" *ngIf="newCharacterWindow"  (click)="closeOverlay($event)">
@@ -129,7 +126,7 @@ export class CharactersListComponent {
 
 async  ngOnInit(){
 
-  //uncomment when ready
+//  //uncomment when ready
 // ()=>{
 //  if(this.localData.loggedUser.username) 
 // this.name = this.localData.loggedUser.username
@@ -137,11 +134,11 @@ async  ngOnInit(){
 
 
 console.log(this.localData.loggedUser);
-await this.getHeroes(this.localData.loggedUser.userId)
-
-
-
+// await this.getHeroes(this.localData.loggedUser.userId) //uncomment when ready 
+await this.getHeroes(1) //remove when ready 
 }
+
+
 public newCharacterWindow = false;
 public showError = true;
 
@@ -156,11 +153,12 @@ private name = ''
   
 
 async getHeroes(userId:any){
-  this.http.post<[CharactersInterface]>("http://localhost:8080/date/heroes", null, {params:{userId}}).subscribe((response)=>{
-for(var i = 0; i<= response.length; i++){
-this.localData.charactersList[i] = response[i]
-}
-console.log(this.localData.charactersList);
+  this.http.post("http://localhost:8080/date/heroes", null, {params:{userId}}).subscribe((response)=>{
+    this.localData.heroes = response;
+    console.log(this.localData.heroes);
+
+    
+
 
   })
 }
@@ -172,7 +170,9 @@ console.log(this.localData.charactersList);
   } else{
       this.http.post("http://localhost:8080/date/add", {name, clasa}).subscribe((response) =>{})
       this.newCharacterWindow=false
-    }}
+    }
+  this.Router.navigate(['/waitingRoom'])
+  }
     
     public currentClassStats={
       Charisma:'0',
@@ -184,7 +184,19 @@ console.log(this.localData.charactersList);
     }
     
     
-    
+   selectCharacter(character:any){
+this.localData.selectedCharacter.id = character.id;
+this.localData.selectedCharacter.class = character.class;
+this.localData.selectedCharacter.hp = character.hp;
+this.localData.selectedCharacter.name = character.name;
+this.localData.selectedCharacter.roomId = character.roomId;
+
+
+this.Router.navigate(['/home'])
+   } 
+
+
+
     selectedClass:string = '';
     
     updateSelectedClass(event: Event):void{

@@ -22,10 +22,15 @@ loggedUser = {
 }
 
 selectedCharacter = {
+  id:null,
+  class:null,
   hp:null,
   name:null,
   roomId:null,
 }
+
+
+heroes:any;
 
 charactersList: any
 

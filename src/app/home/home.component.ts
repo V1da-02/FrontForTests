@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   template: `
+  <button (click)="clearCharacterData()">change character</button>
+
     <div class="interface">
       <p id="storyText" #storyText class="storyText">Defaul text. If u see this, something went wrong :)</p>
       <!-- <button (click)="this.getStory(1)">log storybox</button> -->
@@ -33,6 +35,16 @@ ngOnInit(){
 
 public currentRoom:any;
 private storyBox:any;
+
+
+clearCharacterData(){
+  this.localData.selectedCharacter.class = null;
+  this.localData.selectedCharacter.hp = null;
+  this.localData.selectedCharacter.id = null;
+  this.localData.selectedCharacter.name = null;
+  this.localData.selectedCharacter.roomId = null;
+  this.router.navigate(['/menu'])
+}
 
 
 buttonGetStory(index:number){
@@ -89,7 +101,7 @@ async getStory(roomId:number){
   }
 
 checkLogStatus(){
-  if(this.localData.selectedCharacter.roomId == null || this.localData.loggedUser.username == null){
+  if(this.localData.selectedCharacter.roomId == null || this.localData.loggedUser.username == null || this.localData.selectedCharacter.id == null){
     this.router.navigate(['/login'])
   return false
   }

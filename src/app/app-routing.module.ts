@@ -5,7 +5,7 @@ import { FalseLinkComponent } from './false-link/false-link.component';
 import { HomeComponent } from './home/home.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
 import { CharactersListComponent } from './characters-list/characters-list.component';
-
+import { TempLinkComponent } from './temp-link/temp-link.component';
 
 const routes: Routes = [
 {path:'', redirectTo:'/login', pathMatch:'full'},
@@ -13,6 +13,7 @@ const routes: Routes = [
 {path:'home', component:HomeComponent},
 {path:'menu', component:CharactersListComponent},
 {path:'forge', component:CharacterCreationComponent},
+{path:'waitingRoom', component:TempLinkComponent},
 {path:'**', component:FalseLinkComponent}
 
 ];
