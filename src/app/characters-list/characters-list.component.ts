@@ -5,8 +5,6 @@ import { Router } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { CharacterCreationComponent } from '../character-creation/character-creation.component';
 import { HttpClient } from '@angular/common/http';
-// import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { response } from 'express';
 import { CharactersInterface } from 'src/assets/characters';
 
@@ -130,14 +128,18 @@ import { CharactersInterface } from 'src/assets/characters';
 export class CharactersListComponent {
 
 async  ngOnInit(){
-console.log(this.localData.loggedUser);
-await this.getHeroes(this.localData.loggedUser.userId)
 
-//uncomment when ready
+  //uncomment when ready
 // ()=>{
 //  if(this.localData.loggedUser.username) 
 // this.name = this.localData.loggedUser.username
 // }
+
+
+console.log(this.localData.loggedUser);
+await this.getHeroes(this.localData.loggedUser.userId)
+
+
 
 }
 public newCharacterWindow = false;
@@ -154,7 +156,13 @@ private name = ''
   
 
 async getHeroes(userId:any){
-  this.http.post<[CharactersInterface]>("http://localhost:8080/date/heroes", null, {params:{userId}}).subscribe((response)=>{})
+  this.http.post<[CharactersInterface]>("http://localhost:8080/date/heroes", null, {params:{userId}}).subscribe((response)=>{
+for(var i = 0; i<= response.length; i++){
+this.localData.charactersList[i] = response[i]
+}
+console.log(this.localData.charactersList);
+
+  })
 }
 
 
