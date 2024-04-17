@@ -58,7 +58,7 @@ async getStory(roomId:number){
   
  const box = await this.http.post<storyBox>('http://localhost:8080/date', null, {params:{roomId}}).subscribe((response) =>{
     this.storyBox = response
-    // console.log(response);
+    console.log(response);
     console.log(this.storyBox);
     
     this.textChange(this.storyBox)
