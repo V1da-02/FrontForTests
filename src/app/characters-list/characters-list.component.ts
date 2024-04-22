@@ -14,6 +14,8 @@ import { CharactersInterface } from 'src/assets/characters';
   template: `
   <div class="header">
   <h2></h2>
+  <h3 (click)="this.localData.flush(); this.router.navigate(['/login'])" class="logout">Logout</h3>
+
   </div>
 
   <button (click)="this.newCharacterWindow=!this.newCharacterWindow" style="margin-left: 138px; margin-top:20px">New character</button>
@@ -123,20 +125,24 @@ import { CharactersInterface } from 'src/assets/characters';
   styleUrls: ['./characters-list.component.css']
 })
 export class CharactersListComponent {
+  constructor( public router:Router){}
 
 async  ngOnInit(){
 
 //  //uncomment when ready
-// ()=>{
-//  if(this.localData.loggedUser.username) 
-// this.name = this.localData.loggedUser.username
-// }
+
+ if(this.localData.loggedUser.userId ===0 || this.localData.loggedUser.username === null) {
+this.router.navigate(['/login'])
+}else{this.name = this.localData.loggedUser.username}
 
 
 console.log(this.localData.loggedUser);
-// await this.getHeroes(this.localData.loggedUser.userId) //uncomment when ready 
-await this.getHeroes(1) //remove when ready 
+await this.getHeroes(this.localData.loggedUser.userId) //uncomment when ready 
+// await this.getHeroes(1) //remove when ready 
 }
+
+localData = inject(LocalDataService);
+http = inject(HttpClient);
 
 
 public newCharacterWindow = false;
@@ -147,10 +153,7 @@ errorElement = document.getElementById("errorMsg")
 
 
 private name = ''
-  Router = inject(Router);
-  localData = inject(LocalDataService);
-  http = inject(HttpClient);
-  
+
 
 async getHeroes(userId:any){
   this.http.post("http://localhost:8080/date/heroes", null, {params:{userId}}).subscribe((response)=>{
@@ -171,7 +174,7 @@ async getHeroes(userId:any){
       this.http.post("http://localhost:8080/date/add", {name, clasa}).subscribe((response) =>{})
       this.newCharacterWindow=false
     }
-  this.Router.navigate(['/waitingRoom'])
+  this.router.navigate(['/waitingRoom'])
   }
     
     public currentClassStats={
@@ -192,7 +195,7 @@ this.localData.selectedCharacter.name = character.name;
 this.localData.selectedCharacter.roomId = character.roomId;
 
 
-this.Router.navigate(['/home'])
+this.router.navigate(['/home'])
    } 
 
 

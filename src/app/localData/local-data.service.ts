@@ -16,9 +16,7 @@ playing = false;
 
 loggedUser = {
   username:null,
-  userId:null,
-  // characters:[{name:"Taoy", roomId:"1", class:"Paladin"}]
-  // characters:[]
+  userId:0,
 }
 
 selectedCharacter = {
@@ -34,6 +32,20 @@ heroes:any;
 
 charactersList: any
 
+flush(){
+  this.selectedCharacter = {
+    id:null,
+    class:null,
+    hp:null,
+    name:null,
+    roomId:null,
+  }
+this.loggedUser = {
+  username:null,
+  userId:0,
+}
 
+
+}
 
 }

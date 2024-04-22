@@ -8,7 +8,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   template: `
-  <button (click)="clearCharacterData()">change character</button>
+    <div class="header">
+  <h2 class="chName">{{characterName || 'NoName'}}</h2>
+  <h3 class="chChange" (click)="clearCharacterData()">Quit</h3>  
+</div>
+
+  
 
     <div class="interface">
       <p id="storyText" #storyText class="storyText">Defaul text. If u see this, something went wrong :)</p>
@@ -28,13 +33,17 @@ export class HomeComponent {
 ngOnInit(){
   if(this.checkLogStatus()){
   this.currentRoom = this.localData.selectedCharacter.roomId
-  this.getStory(this.currentRoom)
+  this.characterName = this.localData.selectedCharacter.name
+  this.characterId = this.localData.selectedCharacter.id
+  this.getStory(this.currentRoom, this.characterId)
   this.textChange(this.storyBox) 
 }
 }
 
 public currentRoom:any;
 private storyBox:any;
+public characterName:any;
+public characterId:any
 
 
 clearCharacterData(){
@@ -49,14 +58,14 @@ clearCharacterData(){
 
 buttonGetStory(index:number){
 let goTo = this.storyBox.goTo[index]
-this.getStory(goTo)
+this.getStory(goTo, this.characterId)
 
 }
 
-async getStory(roomId:number){
+async getStory(roomId:number, chId:number){
   console.log(`trying to get room ${roomId} info`);
   
- const box = await this.http.post<storyBox>('http://localhost:8080/date', null, {params:{roomId}}).subscribe((response) =>{
+ const box = await this.http.post<storyBox>('http://localhost:8080/date', null, {params:{roomId, chId}}).subscribe((response) =>{
     this.storyBox = response
     console.log(response);
     console.log(this.storyBox);

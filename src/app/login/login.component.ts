@@ -15,9 +15,9 @@ import { UsersType } from 'src/assets/usersType';
     <br>
     <input #password placeholder="password" type="password" class="inputs" (keydown.enter)="logIn(login.value, password.value)">    
     <br>
-    <button class="btn" (click)="logIn(login.value, password.value)">login</button>
+    <button class="btn" (click)="logIn(login.value, password.value)">Login</button>
 
-  <button (click)="goHome()">home</button>  <!-- TESTARE NAVIGATE-->
+  <button class="btn" (click)="this.router.navigate(['/registration'])">Registration</button>  <!-- TESTARE NAVIGATE-->
     
   </div>
 
@@ -35,7 +35,7 @@ export class LoginComponent {
   
   constructor(private http:HttpClient,
   private localData:LocalDataService,
-  private router:Router) { }
+  public router:Router) { }
 
   text = 
   "This game serves as an alternative for many Dungeons & Dragons enthusiasts who don't have the opportunity to find a Dungeon Master. The provided program allows each user to immerse themselves in a fantasy world full of magic, adventures, and mysteries. It is based on roleplay, where the player's choices significantly influence the storyline, and dice rolling, representing the chance of success or failure in various situations. This project encompasses a wide range of scenarios and multiple possible choices.";  

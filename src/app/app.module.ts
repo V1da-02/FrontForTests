@@ -11,6 +11,7 @@ import { FalseLinkComponent } from './false-link/false-link.component';
 import { CharacterCreationComponent } from './character-creation/character-creation.component';
 import { CharactersListComponent } from './characters-list/characters-list.component';
 import { TempLinkComponent } from './temp-link/temp-link.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TempLinkComponent } from './temp-link/temp-link.component';
     FalseLinkComponent,
     CharacterCreationComponent,
     CharactersListComponent,
-    TempLinkComponent
+    TempLinkComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

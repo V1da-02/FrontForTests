@@ -2,14 +2,20 @@
     height:65px;
     width:100%;
     background-color:rgba(255, 255, 255, 0.332);
-    color:red; 
-    display:flex
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 
-.chList{
-
+.logout:hover{
+text-decoration: underline;
 }
+
+.logout{
+    margin-left: auto; /* Push the h3 element to the right */
+}
+
 
 .chList h3{
     color: white;

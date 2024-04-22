@@ -1,6 +1,6 @@
-/* body {
-    margin: 0;
-  } */
+body {
+    font-family: 'KodeMono'
+  }
   
 
   @font-face {
@@ -31,7 +31,7 @@
 }
 .storyText{
     color: black;
-    font-family:'KodeMono';
+    /* font-family:'KodeMono'; */
     font-size: 35px;
 }
 
@@ -43,7 +43,7 @@
     background-color: rgba(255, 255, 255, 0.685);   
     justify-content: center;
     font-size: 25px;
-    font-family: 'KodeMono';
+    /* font-family: 'KodeMono'; */
     
 
 }
@@ -52,3 +52,26 @@
     background-color: rgba(108, 105, 105, 0.685);   
 
 }
+
+
+.header{
+    height:65px;
+    width:100%;
+    background-color:rgba(255, 255, 255, 0.332);
+    display:flex
+}
+
+.chName{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 7%;
+}
+
+.chChange{
+    margin-top: auto;
+    margin-left: 75%;
+}
+
+.chChange:hover{
+    text-decoration: underline
+}
+
