@@ -1,0 +1,11 @@
+[
+{"id":"1", "login":"ovi", "pass":"3241", "name":"Gusanu Ovidiu", "role":"admin", "email":"gusanu00@gmail.com", "pozitie":"CEO"},
+{"id":"7", "login":"vld11", "pass":"vlad13", "name":"Jidcov Vlad", "role":"admin", "email":"vld11@gmail.com", "pozitie":"Team leader 1"},
+{"id":"8", "login":"VasileBivol", "pass":"Bivik45", "name":"Bivol Vasile", "role":"admin", "email":"BivolVasile00@gmail.com", "pozitie":"Team leader 2"},
+{"id":"9", "login":"BondStef", "pass":"gfdgy55$", "name":"Bondarenco Stefan", "role":"admin", "email":"stefanBond@gmail.com", "pozitie":"Team leader 3"},
+{"id":"2", "login":"steve", "pass":"2222", "name":"Melnic Stefan", "role":"user", "email":"SteveMelcin@gmail.com", "pozitie":"Designer WEB"},
+{"id":"3", "login":"vik", "pass":"1111", "name":"Melniciuc Victor", "role":"user", "email":"MelniVik@gmail.com", "pozitie":"Fullstack Dev"},
+{"id":"4", "login":"t4", "pass":"3333", "name":"Pahomea Tudor", "role":"user", "email":"pahomTT@gmail.com", "pozitie":"Maturator"},
+{"id":"5", "login":"and14", "pass":"aaand4414", "name":"Pahomea Andrei", "role":"user", "email":"andrei44@gmail.com", "pozitie":"Director vanzari"},
+{"id":"6", "login":"cr7", "pass":"dfg41", "name":"Spataru Cristian", "role":"user", "email":"crSpataru@gmail.com", "pozitie":"QA"}
+]
